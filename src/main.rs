@@ -23,9 +23,9 @@ fn main() {
             move |msg| {
                 if running.load(Ordering::SeqCst) {
                     sender.send(msg);
-                    out.send("Nice!")
+                    out.send("true")
                 } else {
-                    out.send("Too bad!")
+                    out.send("false")
                 }
 
             }
@@ -61,4 +61,4 @@ fn main() {
         run.store(false, Ordering::SeqCst);
         println!("Winner is... {}!", msg);
     }
-}}
+}
